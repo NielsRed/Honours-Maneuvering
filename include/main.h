@@ -120,6 +120,12 @@ enum testPrograms // Motor test programs
     E  // Backward
 }; 
 
+enum direction_t
+{
+    Forward,
+    Backward
+};
+
 void CalibrateShunt(void); // Calibrate the shunt for voltage and current
 void CalibrateVernier(void); // Calibrate the Vernier force sensor in balance
 void selectProgram(void);
