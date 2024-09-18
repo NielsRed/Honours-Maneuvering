@@ -245,7 +245,7 @@ void CalibrateVernier(void)
   lcd.clear();
   lcd.home();                // LCD cursor to 0,0
   lcd.print("CAL vernier!"); // Show instruction on 1 LCD-row
-  lcd.setCursor(0, 1);       // LCD cursor to 0,0
+  lcd.setCursor(0, 1);       // LCD cursor to row 2
   lcd.print("Press yellow");
 #endif
 
