@@ -31,7 +31,7 @@
 
 #define LCD 1 // Toggle LCD 0 to 1
 
-enum testPrograms testProgram = B; // which testprogram to run
+enum testPrograms testProgram = A; // which testprogram to run
 enum direction_t direction = Forward;
 
 /* PIN DEFINTIONS */
@@ -445,7 +445,43 @@ Deze functie laat de motor door 9 standen lopen, van 1550 tot 2000. duurt intota
  */
 void motorTest(enum testPrograms prog)
 {
+        lcd.clear();
+        lcd.home();
+        lcd.print("Green for A");
+        lcd.setCursor(0, 1);
+        lcd.print("Blue for B");
   currentState = systemState::Testing; // put system to Testing
+
+  do
+  {
+    handleButtons(pButtonStates);
+
+    if(buttonStates[1] == true)  
+    {
+      prog = A;
+        lcd.clear();
+        lcd.home();
+        lcd.print("Selected prog =");
+        lcd.setCursor(0, 1);
+        lcd.print("A");
+    }
+    
+
+    handleButtons(pButtonStates);
+
+    if(buttonStates[2] == true)
+    {
+      prog = B;
+      lcd.clear();
+        lcd.home();
+        lcd.print("Selected prog =");
+        lcd.setCursor(0, 1);
+        lcd.print("B");
+    }
+
+    handleButtons(pButtonStates);
+  } while (buttonStates[0] == false); 
+
 
 #ifdef DEBUG
   Serial.println((String) "Testing motorprogram:" + (int)prog);
